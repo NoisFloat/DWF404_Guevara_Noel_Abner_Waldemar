@@ -1,7 +1,7 @@
-package app.beans;
+package App.beans;
 
-import app.dao.VideojuegoDAO;
-import app.models.Videojuego;
+import App.dao.VideojuegoDAO;
+import App.models.Videojuego;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;

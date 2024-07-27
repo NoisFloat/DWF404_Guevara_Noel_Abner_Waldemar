@@ -1,7 +1,7 @@
-package app.dao;
+package App.dao;
 
-import app.models.Conexion;
-import app.models.Videojuego;
+import App.models.Conexion;
+import App.models.Videojuego;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Named;
 

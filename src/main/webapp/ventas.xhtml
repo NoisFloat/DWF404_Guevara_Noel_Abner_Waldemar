@@ -5,5 +5,130 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <link href="resources/bootstrap.min.css" rel="stylesheet"/>
+</h:head>
+<body>
+<div class="d-flex justify-content-between align-items-center p-3 border-bottom bg-dark">
+    <div class="logo fs-4 text-white">Desafío 1</div>
+    <a class="btn btn-primary" href="index.xhtml">Menú</a>
+</div>
 
+<div class="container">
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <h2 class="mb-3">Agregar Nueva Venta</h2>
+
+                <!-- Formulario para agregar una nueva venta -->
+                <h:form>
+                    <div class="form-group">
+                        <h:outputLabel for="videojuego_id" value="ID del Videojuego:" class="form-label"/>
+                        <h:inputText id="videojuego_id" value="#{ventasBean.newVenta.videojuego_id}" class="form-control" required="true">
+                            <f:validateLongRange min="1"/>
+                        </h:inputText>
+                        <h:message for="videojuego_id" class="text-danger"/>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel for="fecha" value="Fecha:" class="form-label"/>
+                        <h:inputText id="fecha" value="#{ventasBean.newVenta.fecha}" class="form-control" required="true">
+                            <f:converter converterId="dateConverter"/>
+                        </h:inputText>
+                        <h:message for="fecha" class="text-danger"/>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel for="cantidad" value="Cantidad:" class="form-label"/>
+                        <h:inputText id="cantidad" value="#{ventasBean.newVenta.cantidad}" class="form-control" required="true">
+                            <f:validateLongRange min="1"/>
+                        </h:inputText>
+                        <h:message for="cantidad" class="text-danger"/>
+                    </div>
+                    <h:commandButton value="Agregar" action="#{ventasBean.insertVenta}" class="btn btn-success mt-3"/>
+                </h:form>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <h2 class="mb-3">Actualizar Venta</h2>
+
+                <!-- Formulario para actualizar una venta existente -->
+                <h:form>
+                    <div class="form-group">
+                        <h:outputLabel for="id" value="ID:" class="form-label"/>
+                        <h:inputText id="id" type="number" value="#{ventasBean.selectedVenta.id}" class="form-control" required="true" readonly="true"/>
+                        <h:message for="id" class="text-danger"/>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel for="videojuego_id2" value="ID del Videojuego:" class="form-label"/>
+                        <h:inputText id="videojuego_id2" value="#{ventasBean.selectedVenta.videojuego_id}" class="form-control" required="true">
+                            <f:validateLongRange min="1"/>
+                        </h:inputText>
+                        <h:message for="videojuego_id2" class="text-danger"/>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel for="fecha2" value="Fecha:" class="form-label"/>
+                        <h:inputText id="fecha2" value="#{ventasBean.selectedVenta.fecha}" class="form-control" required="true">
+                            <f:converter converterId="dateConverter"/>
+                        </h:inputText>
+                        <h:message for="fecha2" class="text-danger"/>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel for="cantidad2" value="Cantidad:" class="form-label"/>
+                        <h:inputText id="cantidad2" value="#{ventasBean.selectedVenta.cantidad}" class="form-control" required="true">
+                            <f:validateLongRange min="1"/>
+                        </h:inputText>
+                        <h:message for="cantidad2" class="text-danger"/>
+                    </div>
+                    <h:commandButton value="Actualizar" action="#{ventasBean.updateVenta}" class="btn btn-primary mt-3"/>
+                </h:form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Lista de Ventas</h2>
+
+    <!-- Tabla de ventas -->
+    <h:form id="form1">
+        <h:dataTable value="#{ventasBean.ventas}" var="ven" class="table table-bordered table-hover table-striped">
+            <h:column>
+                <f:facet name="header">
+                    <h5>ID</h5>
+                </f:facet>
+                <h:outputText value="#{ven.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h5>ID del Videojuego</h5>
+                </f:facet>
+                <h:outputText value="#{ven.videojuego_id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h5>Fecha</h5>
+                </f:facet>
+                <h:outputText value="#{ven.fecha}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h5>Cantidad</h5>
+                </f:facet>
+                <h:outputText value="#{ven.cantidad}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h5>Acciones</h5>
+                </f:facet>
+                <h:commandButton value="Eliminar" action="#{ventasBean.deleteVenta(ven.id)}" immediate="true" class="btn btn-danger btn-sm me-2"/>
+                <h:commandButton value="Seleccionar" action="#{ventasBean.selectVenta(ven)}" immediate="true" class="btn btn-primary btn-sm"/>
+            </h:column>
+        </h:dataTable>
+    </h:form>
+</div>
+
+<div class="d-flex justify-content-between align-items-center p-3 border-bottom bg-dark">
+    <div class="text-center text-white">Hecho por Noel Guevara-GF222473 Y Abner Waldemar-DL170325</div>
+</div>
+
+</body>
 </html>

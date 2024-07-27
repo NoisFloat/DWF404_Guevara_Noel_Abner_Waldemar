@@ -79,36 +79,10 @@
         </div>
     </div>
 
-    <h2 class="my-4">Lista de Videojuegos</h2>
-    <!-- Tabla de videojuegos -->
-    <h:form id="form">
-        <h:dataTable value="#{videojuegoBean.videojuegos}" var="videoJ" class="table table-striped">
-            <h:column>
-                <f:facet name="header">ID</f:facet>
-                <h:outputText value="#{videoJ.id}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Nombre</f:facet>
-                <h:outputText value="#{videoJ.nombre}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Género</f:facet>
-                <h:outputText value="#{videoJ.genero}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Precio</f:facet>
-                <h:outputText value="#{videoJ.precio}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Acciones</f:facet>
-                <h:commandButton value="Eliminar" action="#{videojuegoBean.deleteVideojuego(videoJ.id)}" immediate="true" class="btn btn-danger btn-sm"/>
-                <h:commandButton value="Seleccionar" action="#{videojuegoBean.selectVideojuego(videoJ)}" immediate="true" class="btn btn-primary btn-sm"/>
-            </h:column>
-        </h:dataTable>
-    </h:form>
+
 </div>
 <div class="container mt-4">
-    <h2 class="mb-4">Lista de Videojuegos</h2>
+    <h2 class="mb-4 text-center">Lista de Videojuegos</h2>
 
     <!-- Tabla de videojuegos -->
     <h:form id="form1">
@@ -148,8 +122,10 @@
     </h:form>
 </div>
 
-<div class="footer">
-    <p>Hecho por GF222473 Y DL170325</p>
+
+<div class="d-flex justify-content-between align-items-center p-3 border-bottom bg-dark">
+    <div class="text-center text-white">Hecho por Noel Guevara-GF222473 Y Abner Waldemar-DL170325</div>
 </div>
+
 </body>
 </html>

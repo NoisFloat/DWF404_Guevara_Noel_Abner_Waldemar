@@ -1,4 +1,4 @@
-package app.models;
+package App.models;
 
 import java.sql.*;
 import java.util.logging.Level;

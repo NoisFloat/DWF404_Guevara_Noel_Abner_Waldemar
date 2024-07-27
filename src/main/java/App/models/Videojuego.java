@@ -1,4 +1,4 @@
-package app.models;
+package App.models;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Named;
