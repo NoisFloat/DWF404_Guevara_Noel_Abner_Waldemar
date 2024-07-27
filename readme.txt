@@ -2,6 +2,7 @@ Participantes:
 Noel Guevara: GF222473
 Abner Waldemar: DL170325
 
+--REVISAR CADENA DE CONEXION
 
 Ocupe WildFly 33.0.0
 https://github.com/wildfly/wildfly/releases/download/33.0.0.Final/wildfly-33.0.0.Final.zip
