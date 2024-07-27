@@ -73,11 +73,12 @@ public class VentaDAO extends Conexion {
 
     public String updateVenta(Venta venta) throws SQLException {
         connect();
-        String sql = "UPDATE venta SET fecha = ?, cantidad = ? WHERE id = ?";
+        String sql = "UPDATE venta SET videojuego_id = ?, fecha = ?, cantidad = ? WHERE id = ?";
         pstmt = conn.prepareStatement(sql);
         pstmt.setString(1, venta.getFecha());
-        pstmt.setInt(2, venta.getCantidad());
-        pstmt.setInt(3, venta.getId());
+        pstmt.setInt(2, venta.getVideojuego_id());
+        pstmt.setInt(3, venta.getCantidad());
+        pstmt.setInt(4, venta.getId());
         int filasAfectadas = pstmt.executeUpdate();
         pstmt.close();
         return filasAfectadas > 0 ? "exito" : "error";
@@ -85,7 +86,7 @@ public class VentaDAO extends Conexion {
 
     public String deleteVenta(int videojuegoId) throws SQLException {
         connect();
-        String sql = "DELETE FROM venta WHERE videojuego_id = ?";
+        String sql = "DELETE FROM venta WHERE id = ?";
         pstmt = conn.prepareStatement(sql);
         pstmt.setInt(1, videojuegoId);
         int filasAfectadas = pstmt.executeUpdate();
