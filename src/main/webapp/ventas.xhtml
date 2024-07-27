@@ -102,12 +102,6 @@
             </h:column>
             <h:column>
                 <f:facet name="header">
-                    <h5>ID del Videojuego</h5>
-                </f:facet>
-                <h:outputText value="#{ven.videojuego_id}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
                     <h5>Nombre del videojuego</h5>
                 </f:facet>
                 <h:outputText value="#{ven.videojuego.nombre}"/>
@@ -117,6 +111,12 @@
                     <h5>Precio del videojuego</h5>
                 </f:facet>
                 <h:outputText value="#{ven.videojuego.precio}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h5>ID del Videojuego</h5>
+                </f:facet>
+                <h:outputText value="#{ven.videojuego_id}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
@@ -138,6 +138,7 @@
                 <h:commandButton value="Seleccionar" action="#{ventasBean.selectVenta(ven)}" immediate="true" class="btn btn-primary btn-sm"/>
             </h:column>
         </h:dataTable>
+
 
     </h:form>
 </div>

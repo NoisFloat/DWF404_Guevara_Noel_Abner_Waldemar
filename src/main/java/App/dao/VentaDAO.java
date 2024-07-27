@@ -19,8 +19,11 @@ public class VentaDAO extends Conexion {
     public ArrayList<Venta> findAll() throws SQLException {
         connect();
         stmt = conn.createStatement();
-        resultSet = stmt.executeQuery("SELECT * FROM venta as v INNER JOIN videojuego vi\n" +
-                "ON v.videojuego_id = vi.id;");
+        resultSet = stmt.executeQuery("SELECT * FROM venta AS v " +
+                "INNER JOIN videojuego AS vi " +
+                "ON v.videojuego_id = vi.id " +
+                "ORDER BY v.id;");
+
         ArrayList<Venta> Ventas = new ArrayList();
 
         while (resultSet.next()) {
