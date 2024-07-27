@@ -29,7 +29,7 @@ public class VentaDAO extends Conexion {
             tmp.setVideojuego(new Videojuego(resultSet.getInt("videojuego_id"),resultSet.getString("nombre"),resultSet.getString("genero"),resultSet.getDouble("precio")));
             tmp.setVideojuego_id(resultSet.getInt("videojuego_id"));
             tmp.setCantidad(resultSet.getInt("cantidad"));
-            tmp.setFecha(resultSet.getDate("fecha"));
+            tmp.setFecha(resultSet.getString("fecha"));
 
             Ventas.add(tmp);
         }
@@ -45,7 +45,7 @@ public class VentaDAO extends Conexion {
         while (resultSet.next()) {
             tmp.setId(resultSet.getInt("id"));
             tmp.setVideojuego_id(resultSet.getInt("videojuego_id"));
-            tmp.setFecha(resultSet.getDate("fecha"));
+            tmp.setFecha(resultSet.getString("fecha"));
             tmp.setCantidad(resultSet.getInt("cantidad"));
             tmp.setVideojuego(new Videojuego(
                     resultSet.getInt("id"),
@@ -63,10 +63,8 @@ public class VentaDAO extends Conexion {
         String sql = "INSERT INTO venta (videojuego_id, fecha, cantidad) VALUES (?, ?, ?)";
         pstmt = conn.prepareStatement(sql);
         pstmt.setInt(1, venta.getVideojuego_id());
-        // Convertir java.util.Date a java.sql.Date
-        Date sqlDate = new Date(venta.getFecha().getTime());
-        pstmt.setDate(2, sqlDate);
-        pstmt.setDate(2, sqlDate);
+
+        pstmt.setString(2, venta.getFecha());
         pstmt.setInt(3, venta.getCantidad());
         int filasAfectadas = pstmt.executeUpdate();
         pstmt.close();
@@ -75,11 +73,11 @@ public class VentaDAO extends Conexion {
 
     public String updateVenta(Venta venta) throws SQLException {
         connect();
-        String sql = "UPDATE venta SET fecha = ?, cantidad = ? WHERE videojuego_id = ?";
+        String sql = "UPDATE venta SET fecha = ?, cantidad = ? WHERE id = ?";
         pstmt = conn.prepareStatement(sql);
-        pstmt.setDate(1, (Date) venta.getFecha());
+        pstmt.setString(1, venta.getFecha());
         pstmt.setInt(2, venta.getCantidad());
-        pstmt.setInt(3, venta.getVideojuego_id());
+        pstmt.setInt(3, venta.getId());
         int filasAfectadas = pstmt.executeUpdate();
         pstmt.close();
         return filasAfectadas > 0 ? "exito" : "error";

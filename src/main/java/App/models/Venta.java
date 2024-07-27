@@ -9,13 +9,13 @@ import java.util.Date;
 public class Venta {
     private int id;
     private int videojuego_id;
-    private Date fecha;
+    private String fecha;
     private int cantidad;
     private Videojuego videojuego;
 
     public Venta() {}
 
-    public Venta(int id, int videojuego_id, Date fecha, int cantidad, Videojuego videojuego) {
+    public Venta(int id, int videojuego_id, String fecha, int cantidad, Videojuego videojuego) {
         this.id = id;
         this.videojuego_id = videojuego_id;
         this.fecha = fecha;
@@ -39,11 +39,11 @@ public class Venta {
         this.videojuego_id = videojuego_id;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

@@ -34,10 +34,10 @@ public class VideojuegoAPI {
         VideojuegoDAO fuenteDeDatos = new VideojuegoDAO();
         Videojuego videojuego = fuenteDeDatos.findById(id);
         if(videojuego.getGenero() == null) {
-            return Response.status(404).entity("Categoria no encontrada").build(); //Devuelve el codigo de 404, en resumen no existe esa categoria
+            return Response.status(404).entity("Videojuego no encontrada").build(); //Devuelve el codigo de 404, en resumen no existe esa categoria
             //Por definicion estaria bien el 404, pero puede ser cualquier codigo serie 200, 400 o 500, facilmente puede ser el error que quieras
             //Y veras un error diferente segun el error indicado aqui
         }
-        return Response.status(200).entity(videojuego).build();//En caso de que categoria sea diferente de nulo, envia la categoria con un estado OK(200)
+        return Response.status(200).header("Access-Control-Allow-Origin", "*").entity(videojuego).build();//En caso de que categoria sea diferente de nulo, envia la categoria con un estado OK(200)
     }
 }

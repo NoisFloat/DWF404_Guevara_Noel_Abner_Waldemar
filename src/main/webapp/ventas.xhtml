@@ -33,6 +33,7 @@
                         <h:outputLabel for="fecha" value="Fecha:" class="form-label"/>
                         <h:inputText id="fecha" value="#{ventasBean.newVenta.fecha}" class="form-control" required="true">
                             <f:converter converterId="dateConverter"/>
+
                         </h:inputText>
                         <h:message for="fecha" class="text-danger"/>
                     </div>
@@ -54,7 +55,7 @@
                 <h:form>
                     <div class="form-group">
                         <h:outputLabel for="id" value="ID:" class="form-label"/>
-                        <h:inputText id="id" type="number" value="#{ventasBean.selectedVenta.id}" class="form-control" required="true" readonly="true"/>
+                        <h:inputText id="id" type="number" value="#{ventasBean.selectedVenta.id}" class="form-control" required="true" />
                         <h:message for="id" class="text-danger"/>
                     </div>
                     <div class="form-group">
@@ -68,8 +69,10 @@
                         <h:outputLabel for="fecha2" value="Fecha:" class="form-label"/>
                         <h:inputText id="fecha2" value="#{ventasBean.selectedVenta.fecha}" class="form-control" required="true">
                             <f:converter converterId="dateConverter"/>
+
                         </h:inputText>
                         <h:message for="fecha2" class="text-danger"/>
+
                     </div>
                     <div class="form-group">
                         <h:outputLabel for="cantidad2" value="Cantidad:" class="form-label"/>
@@ -93,7 +96,7 @@
         <h:dataTable value="#{ventasBean.ventas}" var="ven" class="table table-bordered table-hover table-striped">
             <h:column>
                 <f:facet name="header">
-                    <h5>ID</h5>
+                    <h5>ID Venta</h5>
                 </f:facet>
                 <h:outputText value="#{ven.id}"/>
             </h:column>
@@ -102,6 +105,18 @@
                     <h5>ID del Videojuego</h5>
                 </f:facet>
                 <h:outputText value="#{ven.videojuego_id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h5>Nombre del videojuego</h5>
+                </f:facet>
+                <h:outputText value="#{ven.videojuego.nombre}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h5>Precio del videojuego</h5>
+                </f:facet>
+                <h:outputText value="#{ven.videojuego.precio}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
@@ -123,6 +138,7 @@
                 <h:commandButton value="Seleccionar" action="#{ventasBean.selectVenta(ven)}" immediate="true" class="btn btn-primary btn-sm"/>
             </h:column>
         </h:dataTable>
+
     </h:form>
 </div>
 
