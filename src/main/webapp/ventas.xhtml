@@ -24,14 +24,14 @@
                 <h:form>
                     <div class="form-group">
                         <h:outputLabel for="videojuego_id" value="ID del Videojuego:" class="form-label"/>
-                        <h:inputText id="videojuego_id" value="#{ventasBean.newVenta.videojuego_id}" class="form-control" required="true">
-                            <f:validateLongRange min="1"/>
+                        <h:inputText id="videojuego_id" value="#{ventasBean.newVenta.videojuego_id}" class="form-control" required="true" requiredMessage="El ID del videojuego es obligatorio">
+                            <f:validateLongRange min="1" />
                         </h:inputText>
                         <h:message for="videojuego_id" class="text-danger"/>
                     </div>
                     <div class="form-group">
                         <h:outputLabel for="fecha" value="Fecha:" class="form-label"/>
-                        <h:inputText id="fecha" value="#{ventasBean.newVenta.fecha}" class="form-control" required="true">
+                        <h:inputText id="fecha" value="#{ventasBean.newVenta.fecha}" class="form-control" required="true" requiredMessage="La fecha es obligatoria">
                             <f:converter converterId="dateConverter"/>
 
                         </h:inputText>
@@ -39,13 +39,14 @@
                     </div>
                     <div class="form-group">
                         <h:outputLabel for="cantidad" value="Cantidad:" class="form-label"/>
-                        <h:inputText id="cantidad" value="#{ventasBean.newVenta.cantidad}" class="form-control" required="true">
-                            <f:validateLongRange min="1"/>
+                        <h:inputText id="cantidad" value="#{ventasBean.newVenta.cantidad}" class="form-control" required="true" requiredMessage="La cantidad es obligatoria">
+                            <f:validateLongRange min="1" />
                         </h:inputText>
                         <h:message for="cantidad" class="text-danger"/>
                     </div>
                     <h:commandButton value="Agregar" action="#{ventasBean.insertVenta}" class="btn btn-success mt-3"/>
                 </h:form>
+
             </div>
 
             <div class="col-md-6 mb-4">
@@ -55,34 +56,36 @@
                 <h:form>
                     <div class="form-group">
                         <h:outputLabel for="id" value="ID:" class="form-label"/>
-                        <h:inputText id="id" type="number" value="#{ventasBean.selectedVenta.id}" class="form-control" required="true" />
+                        <h:inputText id="id" value="#{ventasBean.selectedVenta.id}" class="form-control" required="true" requiredMessage="El ID es obligatorio">
+                            <f:validateLongRange min="1" />
+                        </h:inputText>
                         <h:message for="id" class="text-danger"/>
                     </div>
                     <div class="form-group">
                         <h:outputLabel for="videojuego_id2" value="ID del Videojuego:" class="form-label"/>
-                        <h:inputText id="videojuego_id2" value="#{ventasBean.selectedVenta.videojuego_id}" class="form-control" required="true">
-                            <f:validateLongRange min="1"/>
+                        <h:inputText id="videojuego_id2" value="#{ventasBean.selectedVenta.videojuego_id}" class="form-control" required="true" requiredMessage="El ID del videojuego es obligatorio">
+                            <f:validateLongRange min="1" />
                         </h:inputText>
                         <h:message for="videojuego_id2" class="text-danger"/>
                     </div>
                     <div class="form-group">
                         <h:outputLabel for="fecha2" value="Fecha:" class="form-label"/>
-                        <h:inputText id="fecha2" value="#{ventasBean.selectedVenta.fecha}" class="form-control" required="true">
+                        <h:inputText id="fecha2" value="#{ventasBean.selectedVenta.fecha}" class="form-control" required="true" requiredMessage="La fecha es obligatoria">
                             <f:converter converterId="dateConverter"/>
 
                         </h:inputText>
                         <h:message for="fecha2" class="text-danger"/>
-
                     </div>
                     <div class="form-group">
                         <h:outputLabel for="cantidad2" value="Cantidad:" class="form-label"/>
-                        <h:inputText id="cantidad2" value="#{ventasBean.selectedVenta.cantidad}" class="form-control" required="true">
-                            <f:validateLongRange min="1"/>
+                        <h:inputText id="cantidad2" value="#{ventasBean.selectedVenta.cantidad}" class="form-control" required="true" requiredMessage="La cantidad es obligatoria">
+                            <f:validateLongRange min="1" />
                         </h:inputText>
                         <h:message for="cantidad2" class="text-danger"/>
                     </div>
                     <h:commandButton value="Actualizar" action="#{ventasBean.updateVenta}" class="btn btn-primary mt-3"/>
                 </h:form>
+
             </div>
         </div>
     </div>

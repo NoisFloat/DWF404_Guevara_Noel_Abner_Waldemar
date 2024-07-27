@@ -25,21 +25,22 @@
                 <h:form>
                     <div class="form-group">
                         <h:outputLabel for="nombre2" value="Nombre:" class="form-label"/>
-                        <h:inputText id="nombre2" value="#{videojuegoBean.newVideojuego.nombre}" class="form-control" required="true"/>
+                        <h:inputText id="nombre2" value="#{videojuegoBean.newVideojuego.nombre}" class="form-control" required="true" requiredMessage="El nombre es obligatorio"/>
                         <h:message for="nombre2" class="text-danger"/>
                     </div>
                     <div class="form-group">
                         <h:outputLabel for="genero2" value="Género:" class="form-label"/>
-                        <h:inputText id="genero2" value="#{videojuegoBean.newVideojuego.genero}" class="form-control" required="true"/>
+                        <h:inputText id="genero2" value="#{videojuegoBean.newVideojuego.genero}" class="form-control" required="true" requiredMessage="El genero es obligatorio"/>
                         <h:message for="genero2" class="text-danger"/>
                     </div>
                     <div class="form-group">
                         <h:outputLabel for="precio2" value="Precio:" class="form-label"/>
-                        <h:inputText id="precio2" value="#{videojuegoBean.newVideojuego.precio}" class="form-control" required="true">
+                        <h:inputText id="precio2" value="#{videojuegoBean.newVideojuego.precio}" class="form-control" required="true" requiredMessage="El precio es obligatorio">
                             <f:validateDoubleRange min="0.0" />
                         </h:inputText>
                         <h:message for="precio2" class="text-danger"/>
                     </div>
+
                     <h:commandButton value="Agregar" action="#{videojuegoBean.insertVideojuego}" class="btn btn-success mt-3"/>
                 </h:form>
             </div>
@@ -58,18 +59,18 @@
                     </div>
                     <div class="form-group">
                         <h:outputLabel for="nombre" value="Nombre:" class="form-label"/>
-                        <h:inputText id="nombre" value="#{videojuegoBean.selectedVideojuego.nombre}" class="form-control" required="true"/>
+                        <h:inputText id="nombre" value="#{videojuegoBean.selectedVideojuego.nombre}" class="form-control" required="true" requiredMessage="El nombre es obligatorio"/>
                         <h:message for="nombre" class="text-danger"/>
                     </div>
                     <div class="form-group">
                         <h:outputLabel for="genero" value="Género:" class="form-label"/>
-                        <h:inputText id="genero" value="#{videojuegoBean.selectedVideojuego.genero}" class="form-control" required="true"/>
+                        <h:inputText id="genero" value="#{videojuegoBean.selectedVideojuego.genero}" class="form-control" required="true" requiredMessage="El genero es obligatorio"/>
                         <h:message for="genero" class="text-danger"/>
                     </div>
                     <div class="form-group">
                         <h:outputLabel for="precio" value="Precio:" class="form-label"/>
-                        <h:inputText id="precio" value="#{videojuegoBean.selectedVideojuego.precio}" class="form-control" required="true">
-                            <f:validateDoubleRange min="0.0"/>
+                        <h:inputText id="precio" value="#{videojuegoBean.selectedVideojuego.precio}" class="form-control" required="true" requiredMessage="El precio es obligatorio">
+                            <f:validateDoubleRange min="0"/>
                         </h:inputText>
                         <h:message for="precio" class="text-danger"/>
                     </div>
@@ -126,6 +127,11 @@
 <div class="d-flex justify-content-between align-items-center p-3 border-bottom bg-dark">
     <div class="text-center text-white">Hecho por Noel Guevara-GF222473 Y Abner Waldemar-DL170325</div>
 </div>
-
+<!-- Incluir JavaScript inline para mostrar un mensaje de error al cargar la página -->
+<h:outputScript>
+    window.onload = function() {
+        alert('Recuerda que no puedes eliminar videojuegos que tienen ventas debido a la entidad relacional. SQL-Elemento-Enlazado por Llave Foranea');
+    };
+</h:outputScript>
 </body>
 </html>
