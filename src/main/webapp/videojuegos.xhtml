@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <link href="resources/bootstrap.min.css" rel="stylesheet"/>
+
+</h:head>
+<body>
+<div class="d-flex justify-content-between align-items-center p-3 border-bottom bg-dark">
+    <div class="logo fs-4 text-white">Desafío 1</div>
+    <a class="btn btn-primary" href="index.xhtml">Menú</a>
+</div>
+
+<div class="container">
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <h2 class="mb-3">Agregar Nuevo Videojuego</h2>
+
+                <!-- Formulario para agregar un nuevo videojuego -->
+                <h:form>
+                    <div class="form-group">
+                        <h:outputLabel for="nombre2" value="Nombre:" class="form-label"/>
+                        <h:inputText id="nombre2" value="#{videojuegoBean.newVideojuego.nombre}" class="form-control" required="true"/>
+                        <h:message for="nombre2" class="text-danger"/>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel for="genero2" value="Género:" class="form-label"/>
+                        <h:inputText id="genero2" value="#{videojuegoBean.newVideojuego.genero}" class="form-control" required="true"/>
+                        <h:message for="genero2" class="text-danger"/>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel for="precio2" value="Precio:" class="form-label"/>
+                        <h:inputText id="precio2" value="#{videojuegoBean.newVideojuego.precio}" class="form-control" required="true">
+                            <f:validateDoubleRange min="0.0" />
+                        </h:inputText>
+                        <h:message for="precio2" class="text-danger"/>
+                    </div>
+                    <h:commandButton value="Agregar" action="#{videojuegoBean.insertVideojuego}" class="btn btn-success mt-3"/>
+                </h:form>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <h2 class="mb-3">Actualizar Videojuego</h2>
+
+                <!-- Formulario para actualizar un videojuego existente -->
+                <h:form>
+                    <div class="form-group">
+                        <h:outputLabel for="id" value="ID:" class="form-label"/>
+                        <h:inputText id="id" type="number" value="#{videojuegoBean.selectedVideojuego.id}" class="form-control" required="true">
+                            <f:validateLongRange min="1"/>
+                        </h:inputText>
+                        <h:message for="id" class="text-danger"/>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel for="nombre" value="Nombre:" class="form-label"/>
+                        <h:inputText id="nombre" value="#{videojuegoBean.selectedVideojuego.nombre}" class="form-control" required="true"/>
+                        <h:message for="nombre" class="text-danger"/>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel for="genero" value="Género:" class="form-label"/>
+                        <h:inputText id="genero" value="#{videojuegoBean.selectedVideojuego.genero}" class="form-control" required="true"/>
+                        <h:message for="genero" class="text-danger"/>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel for="precio" value="Precio:" class="form-label"/>
+                        <h:inputText id="precio" value="#{videojuegoBean.selectedVideojuego.precio}" class="form-control" required="true">
+                            <f:validateDoubleRange min="0.0"/>
+                        </h:inputText>
+                        <h:message for="precio" class="text-danger"/>
+                    </div>
+                    <h:commandButton value="Actualizar" action="#{videojuegoBean.updateVideojuego}" class="btn btn-primary mt-3"/>
+                </h:form>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="my-4">Lista de Videojuegos</h2>
+    <!-- Tabla de videojuegos -->
+    <h:form id="form">
+        <h:dataTable value="#{videojuegoBean.videojuegos}" var="videoJ" class="table table-striped">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                <h:outputText value="#{videoJ.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Nombre</f:facet>
+                <h:outputText value="#{videoJ.nombre}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Género</f:facet>
+                <h:outputText value="#{videoJ.genero}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Precio</f:facet>
+                <h:outputText value="#{videoJ.precio}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Acciones</f:facet>
+                <h:commandButton value="Eliminar" action="#{videojuegoBean.deleteVideojuego(videoJ.id)}" immediate="true" class="btn btn-danger btn-sm"/>
+                <h:commandButton value="Seleccionar" action="#{videojuegoBean.selectVideojuego(videoJ)}" immediate="true" class="btn btn-primary btn-sm"/>
+            </h:column>
+        </h:dataTable>
+    </h:form>
+</div>
+<div class="container mt-4">
+    <h2 class="mb-4">Lista de Videojuegos</h2>
+
+    <!-- Tabla de videojuegos -->
+    <h:form id="form1">
+        <h:dataTable value="#{videojuegoBean.videojuegos}" var="videoJ" class="table table-bordered table-hover table-striped">
+            <h:column>
+                <f:facet name="header">
+                    <h5>ID</h5>
+                </f:facet>
+                <h:outputText value="#{videoJ.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h5>Nombre</h5>
+                </f:facet>
+                <h:outputText value="#{videoJ.nombre}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h5>Género</h5>
+                </f:facet>
+                <h:outputText value="#{videoJ.genero}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h5>Precio</h5>
+                </f:facet>
+                <h:outputText value="#{videoJ.precio}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h5>Acciones</h5>
+                </f:facet>
+                <h:commandButton value="Eliminar" action="#{videojuegoBean.deleteVideojuego(videoJ.id)}" immediate="true" class="btn btn-danger btn-sm me-2"/>
+                <h:commandButton value="Seleccionar" action="#{videojuegoBean.selectVideojuego(videoJ)}" immediate="true" class="btn btn-primary btn-sm"/>
+            </h:column>
+        </h:dataTable>
+    </h:form>
+</div>
+
+<div class="footer">
+    <p>Hecho por GF222473 Y DL170325</p>
+</div>
+</body>
+</html>
