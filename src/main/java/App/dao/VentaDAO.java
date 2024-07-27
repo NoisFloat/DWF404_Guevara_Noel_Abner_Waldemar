@@ -75,10 +75,11 @@ public class VentaDAO extends Conexion {
         connect();
         String sql = "UPDATE venta SET videojuego_id = ?, fecha = ?, cantidad = ? WHERE id = ?";
         pstmt = conn.prepareStatement(sql);
-        pstmt.setString(1, venta.getFecha());
-        pstmt.setInt(2, venta.getVideojuego_id());
+        pstmt.setInt(1, venta.getVideojuego_id()); // Primero el ID del videojuego
+        pstmt.setString(2, venta.getFecha());      // Luego la fecha
         pstmt.setInt(3, venta.getCantidad());
         pstmt.setInt(4, venta.getId());
+
         int filasAfectadas = pstmt.executeUpdate();
         pstmt.close();
         return filasAfectadas > 0 ? "exito" : "error";
